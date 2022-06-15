@@ -6,6 +6,9 @@ import cart from "../assets/cart.png"
 import coffee from "../assets/coffee.png"
 import uservector from "../assets/uservector.png"
 import logout from "../assets/logout.png"
+import zayn from "../assets/zayn.png"
+import chat from "../assets/chat.png"
+
 
 
 export default function Navbar() {
@@ -30,7 +33,7 @@ const [show, setShow] = useState(false);
         <div>
             <nav>             
             <img src={Icon} className="icon" alt="icon" />
-                {/* <span className="buttons">
+                <span className="buttons">
                   <button onClick={showLogin} className="LoginBTN">
                     Login
                   </button>
@@ -162,8 +165,8 @@ const [show, setShow] = useState(false);
                     Here
                   </p>
                 </Modal.Footer> 
-               </Modal> */}
-               <span className="buttons">
+               </Modal>
+               {/* <span className="buttons">
               
                     <img src={cart} alt="cart" />
               
@@ -172,23 +175,37 @@ const [show, setShow] = useState(false);
                     title={
                       <img
                         className="avatar"
-                        src=""
+                        src={zayn}
                         alt="avatar"
                       />
                     }
                   >
                     <Link
                       className="dropdownItem"
-                      to="profile"
+                      to="/profile"
                       style={{ textDecoration: "none" }}
                     >
-                      {/* <Link to="profile" style={{ textDecoration: 'none' }}> */}
+                     
                       <img
                         src={uservector}
                         className="dropdownPict"
                         alt="profile"
                       />
                       <span className="dropdownText">Profile</span>
+                    </Link>
+                    <Dropdown.Divider />
+                    <Link
+                      className="dropdownItem"
+                      to=""
+                      style={{ textDecoration: "none" }}
+                    >
+                     
+                      <img
+                        src={chat}
+                        className="dropdownPict"
+                        alt="profile"
+                      />
+                      <span className="dropdownText">Complain</span>
                     </Link>
                     <Dropdown.Divider />
                     <Dropdown.Item
@@ -205,7 +222,7 @@ const [show, setShow] = useState(false);
                       <span className="dropdownText">Logout</span>
                     </Dropdown.Item>
                   </NavDropdown>
-                </span>
+                </span> */}
             </nav>
         </div>
       );

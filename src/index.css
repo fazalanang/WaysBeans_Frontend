@@ -12,16 +12,6 @@ code {
     monospace;
 }
 
-
-/* @font-face {
-    font-family: avenir;
-    src: url("./avenir_ff/AvenirLTStd-Book.otf") format("opentype");
-  }
-  @font-face {
-    font-family: avenirb;
-    src: url("./avenir_ff/AvenirLTStd-Black.otf") format("opentype");
-  }
-  @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap"); */
   .Header {
     margin-bottom: 0;
   }
@@ -117,9 +107,9 @@ code {
     color: #ffffff;
   }
   .formFooter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex !important;
+   justify-content: center !important;
+    align-items: center !important;
   }
   .formFooter p {
     font-size: 18px;
@@ -150,6 +140,9 @@ code {
   .dropdownItem:hover {
     background: #ffffff;
   }
+  .dropdownPict:hover {
+    background: #e9ecef;
+  }
   .dropdownPict {
     height: 40px;
     width: 40px;
@@ -172,12 +165,7 @@ code {
     width: 1047px;
     margin: 42px auto;
   }
-  .product {
-    background: #f6e6da;
-    color: #613d2b;
-    margin-bottom: 1em;
-    box-shadow: 1px 2px 4px;
-  }
+  
   .product img {
     width: 241px;
     height: 312px;
@@ -203,3 +191,271 @@ code {
   }
 
   
+
+  .page {
+    display: flex;
+    justify-content: space-between;
+    margin: 7vh 13.5vw 0;
+  }
+  .AddProduct {
+    width: 33vw;
+  }
+  .AddProduct form {
+    display: flex;
+    flex-direction: column;
+  }
+  .AddProduct h4 {
+    font-weight: 900;
+    font-size: 24px;
+    font-family: avenirb;
+    margin-bottom: 26px;
+    color: #613d2b;
+  }
+  .AddProduct input {
+    background: rgba(97, 61, 43, 0.25);
+    border: 2px solid #613d2b;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #1f1f1f;
+    font-family: avenir;
+    padding-left: 10px;
+    width: 33vw;
+    height: 6vh;
+    margin-bottom: 2.5vh;
+  }
+  .AddProduct .inputFile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6vh;
+    text-align: center;
+    padding-left: 0;
+    border: 2px solid #613d2b;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: rgba(97, 61, 43, 0.25);
+    font-size: 18px;
+    color: #1f1f1f;
+    font-family: avenir;
+    width: 13vw;
+    height: 6vh;
+    color: rgba(97, 61, 43, 0.6);
+  }
+  .inputFile p {
+    margin-top: 0.7em;
+    margin-left: 0.5em;
+  }
+  .inputFile img {
+    margin-right: 0.5em;
+  }
+  .AddProduct .inputDesc {
+    height: 15vh;
+    padding-top: 0.7em;
+    margin-bottom: 2.5vh;
+    background: rgba(97, 61, 43, 0.25);
+    border: 2px solid #613d2b;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #1f1f1f;
+  }
+  .AddProduct .btnSave {
+    width: 260px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+    background: #613d2b;
+    border-radius: 5px;
+    border: none;
+    margin-top: 4vh;
+    align-self: center;
+  }
+  .preview img {
+    width: 30.3vw;
+    height: 68vh;
+  }
+  .vanish {
+    display: none;
+  }
+  .popup {
+    width: 669px;
+    height: 63px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .popText {
+    font-size: 24px;
+    font-family: avenir;
+    text-align: center;
+    color: #469f74;
+    margin: auto;
+  }
+
+  .myCart {
+    margin-top: 60px;
+    margin-left: 197px;
+    color: #613d2b;
+    font-family: avenir;
+    font-weight: 900;
+    font-size: 24px;
+  }
+  .lines {
+    display: flex;
+    width: 1044px;
+    justify-content: space-between;
+    margin-left: 197px;
+  }
+  .line1 {
+    width: 660px;
+    height: 0;
+    border: 1px solid #000000;
+  }
+  .line2 {
+    width: 350px;
+    height: 0;
+    border: 1px solid #000000;
+  }
+  .cart h5 {
+    font-family: avenir;
+    font-weight: 400;
+    font-size: 18px;
+    color: #613d2b;
+    margin-left: 197px;
+    margin-top: 23px;
+  }
+  .Order {
+    margin-left: 197px;
+    display: flex;
+    justify-content: space-between;
+    width: 1044px;
+  }
+  .menulist {
+    margin-bottom: 40px;
+  }
+  .menulist .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 660px;
+  }
+  .menu .product {
+    display: flex;
+    margin-top: 17px;
+  }
+  .menu .price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .product img {
+    width: 80px;
+    height: 80px;
+    margin-right: 13px;
+    margin-bottom: 22px;
+  }
+  .qty p {
+    font-weight: 900;
+    font-size: 14px;
+    font-family: avenir;
+    color: #613d2b;
+    margin-top: 9px;
+  }
+  .qty input {
+    width: 25px;
+    height: 20px;
+    background: #f6e6da;
+    border-radius: 5px;
+    border: none;
+    font-family: avenir;
+    font-weight: 400;
+    font-size: 14px;
+    color: #613d2b;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .qty button {
+    width: 12px;
+    height: 25px;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+  .price p {
+    font-size: 14px;
+    color: #974a4a;
+    font-family: avenir;
+  }
+  .price a {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+  .Order .details {
+    margin-top: 14px;
+  }
+  .details .detail {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details p {
+    margin-bottom: 12px;
+  }
+  .detail .nameDetail,
+  .numberDetail,
+  .priceDetail {
+    font-family: avenir;
+    font-weight: 400;
+    font-size: 14px;
+    color: #974a4a;
+  }
+  .details .line2 {
+    margin-top: 6px;
+  }
+  .details .total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+  }
+  .total p {
+    font-family: avenirb;
+    font-weight: 800;
+    font-size: 14px;
+    color: #974a4a;
+  }
+  .orderBtn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .orderBtn button {
+    width: 260px;
+    height: 40px;
+    background: #613d2b;
+    border-radius: 5px;
+    border: none;
+    margin: 60px 0 50px 0;
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  
+  .emptyContainer {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+  .empty {
+    margin-top: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+  }
+  
+  .empty img {
+    width: auto;
+    height: 400px;
+  }
