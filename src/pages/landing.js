@@ -6,6 +6,7 @@ import React, { useState, useContext, useEffect } from "react";
 // //import stylesN from "../components/Navbar.module.css";
 import Navbar from "../components/navbar.js";
 import Jumbotron from "../assets/Jumbotron.png"
+import product1 from "../assets/product1.png"
 
 
 
@@ -29,22 +30,20 @@ export default function Landing() {
             />
           </div>
           <div className="products">
-            
-             
                 <div className="product">
                  
                     <img
-                      src="{}"
+                      src={product1}
                       // onClick={handLog}
-                      style={{ cursor: "pointer" }}
-                      alt="icon"
+                      style={{ 
+                        cursor: "pointer",
+                        width: 231,
+                        height: 302,
+                        marginBottom: 0
+                       }}
+                      alt="product"
                     />
-               
-                   
-                      <img src="" alt="icon" />
-                    
-                  
-                  <p className="productName">kopi</p>
+                  <p className="productName">RWANDA Beans</p>
                   <p className="productDesc" style={{ marginBottom: 0 }}>
                     Rp.300.000
                   </p>
@@ -55,7 +54,6 @@ export default function Landing() {
                     Stock: 23
                   </p>
                 </div>
-              
           </div>
     
     </>

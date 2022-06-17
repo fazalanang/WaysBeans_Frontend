@@ -6,7 +6,7 @@ import { UserContext } from '../context/userContext'
 import { io } from 'socket.io-client'
 
 let socket
-function Complain () {
+function ComplainAdmin () {
     const [contact, setContact] = useState(null)
     const [contacts, setContacts] = useState([])
     const [messages, setMessages] = useState([])
@@ -15,7 +15,7 @@ function Complain () {
     useEffect(() => {
         socket = io('http://localhost:5000', {
             auth: {
-                token: localStorage.getItem("token")
+                token: localStorage.getItem('token')
             },
             query: {
                 id: state.user.id
@@ -27,11 +27,7 @@ function Complain () {
             socket.emit("load messages", contact?.id)
         })
 
-        // listen error sent from server
-        socket.on("connect_error", (err) => {
-            console.error(err.message); // not authorized
-        });
-        loadContact()
+        loadContacts()
         loadMessages()
 
         return () => {
@@ -39,17 +35,16 @@ function Complain () {
         }
     }, [messages])
 
-    const loadContact = () => {
-        // emit event load admin contact
-        socket.emit("load admin contact")
-        // listen event to get admin contact
-        socket.on("admin contact", (data) => {
-            // manipulate data to add message property with the newest message
-            const dataContact = {
-                ...data,
-                message: messages.length > 0 ? messages[messages.length - 1].message : "Click here to start message"
-            }
-            setContacts([dataContact])
+    const loadContacts = () => {
+        socket.emit("load customer contacts")
+        socket.on("customer contacts", (data) => {
+            let dataContacts = data.filter(item => (item.status !== "admin") && (item.recipientMessage.length > 0 || item.senderMessage.length > 0))
+            // manipulate customers to add message property with the newest message
+            dataContacts = dataContacts.map((item) => ({
+                ...item,
+                message: item.senderMessage.length > 0 ? item.senderMessage[item.senderMessage.length - 1].message : "Click here to start message"
+            }))
+            setContacts(dataContacts)
         })
     }
 
@@ -68,6 +63,7 @@ function Complain () {
                 }))
                 setMessages(dataMessages)
             }
+            loadContacts()
         })
     }
 
@@ -82,7 +78,10 @@ function Complain () {
             e.target.value = ""
         }
     }
+
+
     return (
+        
         <>
             <Navbar/>
             <div className="containerComplain">
@@ -93,4 +92,4 @@ function Complain () {
     )
 }
 
-export default Complain
+export default ComplainAdmin

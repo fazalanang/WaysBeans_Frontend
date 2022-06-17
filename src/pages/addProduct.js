@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 // import styles from "../styles/Landing.module.css";
 import { Modal, Dropdown, NavDropdown } from "react-bootstrap";
-// import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // // import Transactions from "../components/Transactions";
 // //import stylesN from "../components/Navbar.module.css";
 import Navbar from "../components/navbar.js";
 import Jumbotron from "../assets/Jumbotron.png"
-
 
 
 //context
@@ -16,7 +15,7 @@ import Jumbotron from "../assets/Jumbotron.png"
 // import { API, setAuthToken } from "../config/api";
 
 export default function AddProduct() {
-  //state
+  let navigate = useNavigate ()
 
   const [modal, setModal] = useState(false);
   const [preview, setPreview] = useState(null);

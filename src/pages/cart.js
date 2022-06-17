@@ -35,7 +35,7 @@ export default function Cart() {
                     
                       <div >
                         <div className="menu">
-                          <div className="product">
+                          <div className="productCart">
                             <img src={Guetemala} alt="menu pict" />
                             <div className="qty">
                               <p>kopi</p>

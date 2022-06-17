@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+  .dropdown-toggle::after {
+    display: none !important; 
+  }
+
   .Header {
     margin-bottom: 0;
   }
@@ -64,7 +68,7 @@ code {
     border: none;
   }
   .modalform {
-    width: 416px;
+    width: 316px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -165,10 +169,16 @@ code {
     width: 1047px;
     margin: 42px auto;
   }
+
+  .product {
+    background-color:#F6E6DA;
+    width: 231px;
+    height: 402px;
+  }
   
   .product img {
-    width: 241px;
-    height: 312px;
+    width: 231px;
+    height: 302px;
   }
   .product img:hover {
     transform: scaleY(1.1) scaleX(1.1);
@@ -177,10 +187,11 @@ code {
   .product .productName {
     margin-top: 14px;
     margin-bottom: 6px;
-    font-family: avenir;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
     font-size: 18px;
     margin-left: 16px;
+    color: #613D2B;
   }
   .product .productDesc {
     margin-top: 5px;
@@ -190,8 +201,7 @@ code {
     font-family: avenir;
   }
 
-  
-
+/* ADD PRODUCT */
   .page {
     display: flex;
     justify-content: space-between;
@@ -293,6 +303,7 @@ code {
     margin: auto;
   }
 
+/* CART */
   .myCart {
     margin-top: 60px;
     margin-left: 197px;
@@ -340,7 +351,7 @@ code {
     align-items: center;
     width: 660px;
   }
-  .menu .product {
+  .menu .productCart {
     display: flex;
     margin-top: 17px;
   }
@@ -349,7 +360,7 @@ code {
     flex-direction: column;
     justify-content: center;
   }
-  .product img {
+  .productCart img {
     width: 80px;
     height: 80px;
     margin-right: 13px;
@@ -494,7 +505,7 @@ code {
       margin-right: 100px;
   }
 
-  .rightComplain .chat .headerChat {
+  .rightComplain .headerChat {
     display: flex;
     background-color: #C4C4C4;
     border-radius: 10px 10px 0px 0px; 
@@ -528,9 +539,7 @@ code {
 
   .containerMassage {
     background-color: #DFDFDF;
-    border-radius: 0px 0px 10px 10px;
     height: 500px;
-    margin-bottom: 20px;
     padding: 15px;
   }
 
@@ -560,7 +569,9 @@ code {
 
   .massage {
     display: flex;
-    margin-top: 200px;
+    background-color: #DFDFDF;
+    border-radius: 0px 0px 10px 10px;
+    padding: 20px;
   }
 
   .massage .input{
