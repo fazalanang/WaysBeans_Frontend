@@ -373,7 +373,7 @@ code {
     color: #613d2b;
     margin-top: 9px;
   }
-  .qty input {
+  .qty span {
     width: 25px;
     height: 20px;
     background: #f6e6da;

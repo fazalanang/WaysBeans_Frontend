@@ -60,7 +60,7 @@ export default function Landing() {
                    
                       {/* <img src={item.image} alt="icon" />   */}
                   <p className="productName">{item.name}</p>
-                  <p className="productDesc" style={{ marginBottom: 0 }}>
+                  <p className="productDesc" style={{ marginBottom: 0, textDecoration: "none" }}>
                     Rp.{item.price}
                   </p>
                   <p
