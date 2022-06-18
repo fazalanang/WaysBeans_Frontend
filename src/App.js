@@ -41,7 +41,6 @@ function App() {
         return dispatch({
           type: "AUTH_ERROR",
         });
-        // navigate("/");
       }
 
       // Get user data
@@ -73,7 +72,7 @@ function App() {
       <Route path="/admin-dashboard" element={<AdminDashboard />} />
       <Route path="/complain" element={<Complain />} />
       <Route path="/complain-admin" element={<ComplainAdmin />} />
-      <Route path="/detail-product" element={<Detail />} />
+      <Route path="/detail-product/:id" element={<Detail />} />
 
     </Routes>
    

@@ -86,7 +86,9 @@ function Complain () {
         <>
             <Navbar/>
             <div className="containerComplain">
+                <div className='leftComplains'>
                 <Contact dataContact={contacts} clickContact={onClickContact} contact={contact} />
+                </div>
                 <Chat contact={contact} messages={messages} user={state.user} sendMessage={onSendMessage} />
             </div>
         </>

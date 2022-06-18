@@ -6,7 +6,7 @@ import Icon from "../assets/Icon.png"
 import cart from "../assets/cart.png"
 import coffee from "../assets/coffee.png"
 import uservector from "../assets/uservector.png"
-import logout from "../assets/logout.png"
+import Logout from "../assets/logout.png"
 import zayn from "../assets/zayn.png"
 import chat from "../assets/chat.png"
 
@@ -17,7 +17,9 @@ export default function Navbar() {
   let navigate = useNavigate();
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [state, dispatch] = useContext(UserContext);
+  const [qtyCart, setQtyCart] = useState(0);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -47,18 +49,26 @@ export default function Navbar() {
     });
   };
 
+
   const closeReg = () => setRegister(false);
   const showReg = () => setRegister(true);
 
-//   //login modal toggle
+
   const closeLogin = () => setLogin(false);
   const showLogin = () => setLogin(true);
 
-const [show, setShow] = useState(false);
+ const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+ const getProductCart = async () => {
+  try {
+    const response = await API.get("/cart");
+    setQtyCart(response.data.data.length);
+    // console.log(response.data.data.length);
+  } catch (error) {
+    console.log(error);
+  }
+};
+ 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -104,7 +114,6 @@ const [show, setShow] = useState(false);
 
         // Status check
         if (response.data.data.user.status == "admin") {
-          navigate("/admin-dashboard");
         } else {
           navigate("/");
         }
@@ -112,22 +121,39 @@ const [show, setShow] = useState(false);
        
       }
       setLogin(false)
+
+      console.log(isAdmin);
     } catch (error) {
       console.log(formLogin)
       console.log(error);
     }
   };
 
+  const checkAdmin = () =>{
+    if(state.user.name == "admin"){
+      setIsAdmin(true)
+    }
+  }
+
+  const logout = () => {
+    console.log(state);
+    dispatch({
+      type: "LOGOUT",
+    });
+    navigate("/");
+  };
 
   useEffect(() => {
-    console.log(state.user.status)
+    checkAdmin()
+    getProductCart()
+    console.log(isAdmin)
   }, [state]);
     return (
         <div>
-            <nav>
-            <Link to="/">             
+            <nav>             
+              <div className="pointer" onClick={() => {navigate("/")}}>
             <img src={Icon} className="icon" alt="icon" />
-            </Link>
+              </div>
             {!state.isLogin ? (
               <div>
                 <span className="buttons">
@@ -138,7 +164,6 @@ const [show, setShow] = useState(false);
                     Register
                   </button>
                 </span>
-            {/* REGISTER */}
               <Modal
                 show={register}
                 onHide={closeReg}
@@ -148,7 +173,7 @@ const [show, setShow] = useState(false);
                   style={{
                     paddingBottom: "13px",
                     paddingTop: "25px",
-                    width: "400px",
+                    width: "416px",
                     paddingLeft: "25px",
                     borderBottom: "0 none",
                   }}
@@ -205,7 +230,7 @@ const [show, setShow] = useState(false);
                   </p>
                 </Modal.Footer>
               </Modal>
-            {/* LOGIN */}
+
               <Modal
                 show={login}
                 onHide={closeLogin}
@@ -215,7 +240,7 @@ const [show, setShow] = useState(false);
                   style={{
                     paddingBottom: "13px",
                     paddingTop: "25px",
-                    width: "400px",
+                    width: "416px",
                     paddingLeft: "25px",
                     borderBottom: "0 none",
                   }}
@@ -262,13 +287,23 @@ const [show, setShow] = useState(false);
                   </p>
                 </Modal.Footer> 
                </Modal>
-          
                </div>
                ):(
                 <span className="buttons">
-                  <Link to="/cart">
+                  {!isAdmin ? (
+                <div className="pointer" onClick={() => {navigate("/cart")}}>
                     <img src={cart} alt="cart" />
-                  </Link>
+                      {qtyCart ? (
+                      <span style={{fontSize:14, position:'absolute', marginLeft:-8}}className="bg-danger rounded-circle text-light px-1 ">{qtyCart}</span>
+                      ):(
+                        <></>
+                      )}
+                </div>
+                  ):(
+                  <div> </div>
+                  )}
+              
+              
                   <NavDropdown
                     id="dropdown-basic"
                     title={
@@ -277,8 +312,9 @@ const [show, setShow] = useState(false);
                         src={zayn}
                         alt="avatar"
                       />
-                    }>
-                    { state.user.status == "customer" ? (
+                    }
+                  >
+                    { !isAdmin ? (
                       <div>
                     <Link
                       className="dropdownItem"
@@ -346,7 +382,7 @@ const [show, setShow] = useState(false);
                       style={{ padding: 0 }}
                     >
                       <img
-                        src={logout}
+                        src={Logout}
                         className="dropdownPict"
                         alt="logout"
                       />

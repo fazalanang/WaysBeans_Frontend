@@ -27,20 +27,11 @@ function Chat ({contact, user, messages, sendMessage}) {
                     </div>
                     <div className="containerMassage">
                         {messages.map((item, index) => (
-                            <div key={index}>
-                                <div className={`d-flex py-1 ${item.idSender === user.id 
-                                    ? <div className="chatTwo" ></div>
-                                    : <div className="chatOne"></div> 
-                                    }`}>
-                                    <div
-                                        className={ item.idSender === user.id 
-                                            ? "chat-me" 
-                                            : "chat-other"}
-                                    >
+                            <div key={index} className={"d-flex justify-content-end"}>
+                                    <div className='chatOne'>
                                         {item.message}
                                     </div>
-                                </div>
-                            </div>
+                                    </div>
                         ))}
                     </div>
                     <div className="massage">
