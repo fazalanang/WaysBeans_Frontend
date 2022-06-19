@@ -75,7 +75,7 @@ code {
     transform: translate(-50%, -50%);
   }
   .formTitle {
-    font-family: avenirb;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
     font-size: 36px;
     color: #613d2b;
@@ -105,10 +105,11 @@ code {
     width: 350px;
     height: 50px;
     margin-top: 9px;
-    font-family: avenirb;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
     font-size: 18px;
     color: #ffffff;
+    border: none;
   }
   .formFooter {
     display: flex !important;
@@ -124,6 +125,11 @@ code {
     font-family: avenirb;
     font-weight: 900;
     cursor: pointer;
+  }
+  .modal-content {
+    width: 80% !important;
+    margin-top: 100px;
+    border: none !important;
   }
   
   /*Dropdown*/
@@ -594,8 +600,9 @@ code {
     margin-left: 20px;
     background-color: #8AD0D0;
     border-radius: 10px;
-    padding-left: 26px;
-    padding-top: 7px;
+    padding-left: 10px;
+    padding-bottom: 3px;
+    border: none;
   }
 
   .massage .input input{
@@ -623,6 +630,11 @@ code {
 
   .containerDetail .detailLeft {
     flex: 50%;
+  }
+
+  .containerDetail .detailLeft img {
+    width: 436px;
+    height: 555px;
   }
 
   .containerDetail .detailRight {
@@ -791,6 +803,6 @@ code {
   table tr td img {
       width: 25px;
       height: 25px;
-      margin-left: 88px;
+      margin-left: 120px;
   }
 /* end admin dashboard */

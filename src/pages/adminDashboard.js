@@ -13,8 +13,7 @@ function Admin () {
                     <tr>
                         <th class="no">No</th>
                         <th class="name">Name</th>
-                        <th class="addresAdmin">Address</th>
-                        <th>Post Code</th>
+                        <th class="addresAdmin">Address & Post Code</th>
                         <th>Products Order</th>
                         <th>Status</th>
                         <th class="action">Action</th>
@@ -22,8 +21,7 @@ function Admin () {
                     <tr>
                         <td>1</td>
                         <td>Sugeng No Pants</td>
-                        <td>Cileungsi</td>
-                        <td>16820</td>
+                        <td>Cileungsi, 16820</td>
                         <td>RWANDA Beans</td>
                         <td class="yellow">Waiting Approve</td>
                         <td class="btnAction">
@@ -34,8 +32,7 @@ function Admin () {
                     <tr>
                         <td>2</td>
                         <td>Haris Game</td>
-                        <td>Serang</td>
-                        <td>42111</td>
+                        <td>Serang, 42111</td>
                         <td>ETHIOPIA Beans</td>
                         <td class="green">Succes</td>
                         <td><img src={allow}/></td>
@@ -43,8 +40,7 @@ function Admin () {
                     <tr>
                         <td>3</td>
                         <td>Aziz Union</td>
-                        <td>Bekasi</td>
-                        <td>13450</td>
+                        <td>Bekasi, 13450</td>
                         <td>GUETEMALA Beans</td>
                         <td class="red">Cancel</td>
                         <td><img src={deny}/></td>
@@ -52,8 +48,7 @@ function Admin () {
                     <tr>
                         <td>4</td>
                         <td>Lee Tanjung Balai</td>
-                        <td>Tanjung Balai</td>
-                        <td>21331</td>
+                        <td>Tanjung Balai, 21331</td>
                         <td>NICARAGUA Beans</td>
                         <td class="blue">On The Way</td>
                         <td><img src={allow}/></td>

@@ -72,16 +72,14 @@ function Complain () {
     }
 
     const onSendMessage = (e) => {
-        if (e.key === 'Enter') {
-            const data = {
+            const dataSend = {
                 idRecipient: contact.id,
                 message: e.target.value
             }
-
-            socket.emit("send message", data)
+            socket.emit("send message", dataSend)
             e.target.value = ""
-        }
     }
+
     return (
         <>
             <Navbar/>

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 // //import stylesN from "../components/Navbar.module.css";
 import Navbar from "../components/navbar.js";
 import Jumbotron from "../assets/Jumbotron.png"
+import PopUp from "../components/PopUp/PopUpProduct.js";
 
 
  
@@ -18,7 +19,7 @@ import { API, setAuthToken } from "../config/api";
 export default function AddProduct() {
   let navigate = useNavigate();
 
-  const [modal, setModal] = useState(false);
+  const [isPopUp, setIsPopUp] = useState(false);
   const [preview, setPreview] = useState(null);
   const [form, setForm] = useState({
     name: "",
@@ -40,12 +41,6 @@ export default function AddProduct() {
       setPreview(url);
     }
   };
-
-  const modalClose = () => {
-    setModal(false);
-    // navigate("/addproduct");
-  };
-  const showModal = () => setModal(true);
 
   const handleSubmit = async (e) => {
     try {
@@ -69,7 +64,6 @@ export default function AddProduct() {
 
       console.log(response);
 
-      navigate("/admin-dashboard");
     } catch (error) {
       console.log(error);
     }
@@ -81,6 +75,7 @@ export default function AddProduct() {
 
   return (
     <>
+      <PopUp open={isPopUp} onClose={()=> setIsPopUp(false)}/>
       <Navbar />
       <div className="page">
         <div className="AddProduct">
@@ -129,7 +124,7 @@ export default function AddProduct() {
               aria-label="File browser example"
             />
 
-            <button className="btnSave" type="submit" onClick={showModal}>
+            <button className="btnSave" type="submit" onClick={() => setIsPopUp(true)}>
               Add Product
             </button>
           </form>

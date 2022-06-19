@@ -27,7 +27,7 @@ function Chat ({contact, user, messages, sendMessage}) {
                     </div>
                     <div className="containerMassage">
                         {messages.map((item, index) => (
-                            <div key={index} className={"d-flex justify-content-end"}>
+                            <div key={index} className={`d-flex ${item.idSender === user.id ? "justify-content-end": "justify-content-start"}`}>
                                     <div className='chatOne'>
                                         {item.message}
                                     </div>
@@ -36,11 +36,11 @@ function Chat ({contact, user, messages, sendMessage}) {
                     </div>
                     <div className="massage">
                         <div className="input">
-                            <input placeholder="Write your message here ..." type="text" onKeyPress={sendMessage} />
+                            <input placeholder="Write your message here ..." type="text" />
                         </div>
-                        <div className="iconSend">
-                            <img src= {iconSend} alt='send' onKeyPress={sendMessage} />
-                        </div>
+                        <button className="iconSend" onClick={sendMessage} type="submit" >
+                            <img src= {iconSend} alt='send' />
+                        </button>
                     </div>
                 </div>
                 </>

@@ -63,7 +63,7 @@ export default function  Detail() {
             <Navbar/>
             <div className="containerDetail">
                 <div className="detailLeft">
-                    <img src={Guetemala} alt="detail image"/>
+                    <img src={product.image} alt="detail image"/>
                 </div>
                 <div className="detailRight">
                     <div className="headingDetail">
