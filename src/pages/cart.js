@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Modal,Container,
+import { 
+  Container,
   Row,
   Col,
   InputGroup,
@@ -104,17 +105,6 @@ export default function Cart() {
         config
       );
       console.log(response);
-
-      // Checking process
-      // if (response?.status == 200) {
-      //   const alert = (
-      //     <Alert variant="success" className="py-1">
-      //       Add Transaction success
-      //     </Alert>
-      //   );
-      //   setMessage(alert);
-      //   navigate("/profile");
-      // }
 
       const token = response.data.payment.token;
 
