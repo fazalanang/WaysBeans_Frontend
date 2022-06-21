@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/navbar";
-import Guetemala from "../assets/Guetemala.png"
+import IconTrash from "../assets/icons-trash-64.png"
+import { UserContext } from "../context/userContext";
 
 import { API } from "../config/api";
 
 export default function  Detail() {
     const [product, setProduct] = useState([]);
     const [message, setMessage] = useState(null);
+    const [state] = useContext(UserContext)
     let navigate = useNavigate();  
 
     const { id } = useParams();
@@ -52,6 +54,16 @@ export default function  Detail() {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      const response = await API.delete("/product/" + id);
+      setProduct(response.data.data);
+      navigate ("/")
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getProduct();
     console.log(product)
@@ -74,8 +86,15 @@ export default function  Detail() {
                         <p>{product.desc}
                         </p>
                     </div>
-                    <div className="price">
-                        <h3>Rp.{product.price}</h3>
+                    <div className="footerdetail">
+                    {state.user.status == "admin" ? (
+                      <div className="icontrash">
+                        <button onClick={handleDelete}><img src={IconTrash} alt="iconTrash"/></button>
+                      </div>
+                    ):(<></>) }
+                      <div className="price">
+                          <h3>Rp.{product.price}</h3>
+                      </div>
                     </div>
                     <div className="btnDetail">
                         <button onClick={handleAddCart}>Add Cart</button>

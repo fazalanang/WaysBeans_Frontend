@@ -57,8 +57,6 @@ export default function Navbar() {
   const closeLogin = () => setLogin(false);
   const showLogin = () => setLogin(true);
 
- const [show, setShow] = useState(false);
-
  const getProductCart = async () => {
   try {
     const response = await API.get("/cart");
@@ -167,7 +165,7 @@ export default function Navbar() {
               <Modal
                 show={register}
                 onHide={closeReg}
-                // className="modalform"
+                // className="modalform register"
               >
                 <Modal.Header
                   style={{
@@ -234,7 +232,7 @@ export default function Navbar() {
               <Modal
                 show={login}
                 onHide={closeLogin}
-                // className="modalform"
+                // className="modalform login"
               >
                 <Modal.Header
                   style={{
@@ -315,6 +313,7 @@ export default function Navbar() {
                     }
                   >
                     { !isAdmin ? (
+                      // dropdown user
                       <div>
                     <Link
                       className="dropdownItem"
@@ -346,6 +345,7 @@ export default function Navbar() {
                     <Dropdown.Divider />
                     </div>
                     ):(
+                      // dropdown admin
                       <div>
                       <Link
                       className="dropdownItem"

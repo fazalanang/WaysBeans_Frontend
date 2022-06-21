@@ -674,12 +674,32 @@ code {
     justify-content: end;
   }
 
-  .detailRight .price h3 {
+  .footerdetail {
+    display: flex;
+  }
+
+  .price h3 {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 900;
     font-size: 24px;
     line-height: 33px;
     color: #974A4A;
+    flex: 80%;
+  }
+
+  .icontrash {
+    flex: 20%;
+    cursor: pointer;
+  }
+
+  .icontrash button {
+    border: none;
+    background-color: #FFFFFF;
+  }
+
+  .icontrash img {
+    width: 33px;
+    height: 33px;
   }
 
   .detailRight .btnDetail button {

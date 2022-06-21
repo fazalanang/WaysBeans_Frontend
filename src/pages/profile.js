@@ -6,7 +6,7 @@ import { Modal, Dropdown, NavDropdown } from "react-bootstrap";
 // //import stylesN from "../components/Navbar.module.css";
 import Navbar from "../components/navbar.js";
 import ProfileIMG from "../assets/ProfileImage.png"
-import Guetemala from "../assets/Guetemala.png"
+import Guetemala from "../assets/product2.png"
 import Trash from "../assets/trash.svg"
 import styles from "../styles/Profile.module.css";
 import qrcode from "../assets/qr-code.png"
@@ -103,7 +103,7 @@ useEffect(() => {
                       Price : Rp 20
                     </p>
                     <p className={styles.productQty}>
-                      Qty : 2
+                      Qty : {item.qty}
                     </p>
                     <p className={styles.subTotal}>
                       Sub Total : {item.qty}

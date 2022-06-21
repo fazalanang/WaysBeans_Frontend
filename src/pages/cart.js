@@ -1,13 +1,12 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal,Container,
   Row,
   Col,
   InputGroup,
   FormControl,
-  Button, Form } from "react-bootstrap";
+  Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar.js";
-import Guetemala from "../assets/Guetemala.png"
 import Trash from "../assets/trash.svg"
 import { API } from "../config/api";
 import convertRupiah from "rupiah-format";
@@ -28,12 +27,14 @@ export default function Cart() {
     try {
       const response = await API.get("/cart");
       setProducts(response.data.data);
+      console.log(response.data.data)
       const totalqty = response.data.data.reduce(
         (sum, elem) => sum + elem.qty,
         0
       );
         setQty(totalqty)
         console.log(totalqty)
+
         const totalprice = response.data.data.reduce(
           (sum, elem) => sum + elem.qty * elem.product.price,
           0
@@ -63,18 +64,7 @@ export default function Cart() {
     }
   };
 
-  const getQty = async () =>{
-    try {
-      
-      
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   const decreaseCart = async (idProduct) => {
-    
-
     try {
       const result = products.find(({ id }) => id == idProduct);
       const config = {
@@ -94,8 +84,6 @@ export default function Cart() {
 
   const handleBuy = async () => {
     try {
-      // e.preventDefault();
-
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -169,8 +157,7 @@ export default function Cart() {
 
   useEffect(() => {
     getProductCart();
-    getQty()
-    sendMessage()
+    sendAddress()
     const midtransScriptUrl = "https://app.sandbox.midtrans.com/snap/snap.js";
     //change this according to your client-key
     const myMidtransClientKey = "Client key here ...";
@@ -195,12 +182,12 @@ export default function Cart() {
     // console.log(e.target.value)
   };
 
-  const sendMessage = async (e) => {
+  const sendAddress = async (e) => {
     try {
       const response = await axios.get(
         `https://kodepos.herokuapp.com/search/?q=${e.target.value}`
       );
-      setDataAddress(response.data.data)
+      setDataAddress(response.data.data) 
       console.log(dataAddress)
     } catch (error) {
       console.log(error)
@@ -225,7 +212,7 @@ export default function Cart() {
                       backgroundColor: "#e8e8e8",
                       border: "none"
                     }}
-                    onKeyPress={sendMessage}
+                    onKeyPress={sendAddress}
                   />
                 </InputGroup>
           </Col>
@@ -278,7 +265,6 @@ export default function Cart() {
                               <button
                                 type="button"
                                 onClick={() => increaseCart(item.id)}
-
                               >
                                 +
                               </button>

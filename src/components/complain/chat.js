@@ -36,9 +36,9 @@ function Chat ({contact, user, messages, sendMessage}) {
                     </div>
                     <div className="massage">
                         <div className="input">
-                            <input placeholder="Write your message here ..." type="text" />
+                            <input placeholder="Write your message here ..." type="text"  onKeyPress={sendMessage}/>
                         </div>
-                        <button className="iconSend" onClick={sendMessage} type="submit" >
+                        <button className="iconSend" type="submit" >
                             <img src= {iconSend} alt='send' />
                         </button>
                     </div>
