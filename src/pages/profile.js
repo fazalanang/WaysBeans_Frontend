@@ -97,16 +97,16 @@ useEffect(() => {
                   <div className={styles.number}>
                     <p className={styles.productName}>{item.products?.map((item) =>(`${item.name} `))}</p>
                     <p className={styles.date}>
-                      {item.createdAt}
+                      {dateFormat(item.createdAt, "dddd, d mmmm yyyy")}
                     </p>
                     <p className={styles.productPrice}>
-                      Price : Rp 20
+                      Price : {convertRupiah.convert(item.price)}
                     </p>
                     <p className={styles.productQty}>
                       Qty : {item.qty}
                     </p>
                     <p className={styles.subTotal}>
-                      Sub Total : {item.qty}
+                      Sub Total : {convertRupiah.convert(item.price)}
                     </p>
                   </div>
                 </div>
@@ -120,16 +120,16 @@ useEffect(() => {
                     src={qrcode}
                     alt="waysbeans icon"
                   />
-                    {/* <div className={styles.status}>{item.status}</div> */}
-                    <button
-                      className={styles.statuso}
-                    //   onClick={() => finishTransaction(item.id)}
-                    >
-                      {item.status}
-                    </button>
-                  
-                    
-                
+                  <div className={styles.status}>{item.status}</div>
+                {item.status == 'on the way'? (
+                <button
+                className={styles.statuso}
+                onClick={()=> {updateStatus(item.id, "success")}}>
+                Completed
+                </button>
+                ):( 
+                  <></>
+                )}
                 </div>
               </div>
           ))}
