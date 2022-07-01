@@ -11,6 +11,8 @@ import Trash from "../assets/trash.svg"
 import styles from "../styles/Profile.module.css";
 import qrcode from "../assets/qr-code.png"
 import iconS from "../assets/logo-small.png"
+import dateFormat from "dateformat";
+import convertRupiah from "rupiah-format";
 
 import { UserContext } from "../context/userContext.js";
 import { API } from "../config/api.js";
@@ -39,6 +41,22 @@ const getTransactions = async () => {
     const response = await API.get("/transaction");
     setTransaction(response.data.data);
     console.log(response.data.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const updateStatus = async (id, status) => {
+  try {
+      const config = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+
+      const body = JSON.stringify({status: status});
+    const response = await API.patch(`/transaction/${id}`, body,config);
+    console.log(response.data);
   } catch (error) {
     console.log(error);
   }
