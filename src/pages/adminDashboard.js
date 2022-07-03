@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 // import allow from "../assets/allow.png"
 // import deny from "../assets/deny.png"
 import Navbar from "../components/navbar"
+import convertRupiah from "rupiah-format";
 import dateFormat from "dateformat";
 import { UserContext } from "../context/userContext.js";
 import { API } from "../config/api.js";
@@ -63,6 +64,7 @@ function AdminDashboard () {
                         <th class="addresAdmin">Tgl Pembayaran</th>
                        
                         <th>Jenis Pembayaran</th>
+                        <th>Nominal</th>
                         <th>Status</th>
                         <th class="action">Action</th>
                     </tr>
@@ -71,8 +73,8 @@ function AdminDashboard () {
                         <td>{index+1}</td>
                         <td>{item.buyer.name}</td>
                         <td>{dateFormat(item.createdAt, "dddd, d mmmm yyyy")}</td>
-                        
                         <td>{item.products?.map((item) =>(`${item.name} `))}</td>
+                        <td>{convertRupiah.convert(item.price)}</td>
                         <td class="green">success</td>
                         <td class="btnAction">
                             <button className="cancel" onClick={() => deleteById(item.id)} >Cancel</button>
