@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect  } from "react";
 import { UserContext } from "../context/userContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Modal, Dropdown, Button, NavDropdown } from "react-bootstrap";
-import Icon from "../assets/Icon.png"
+import Icon from "../assets/logoSM.png"
 import cart from "../assets/cart.png"
 import coffee from "../assets/coffee.png"
 import uservector from "../assets/uservector.png"

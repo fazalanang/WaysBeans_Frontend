@@ -7,6 +7,7 @@ import AdminDashboard from "./pages/adminDashboard";
 import Complain from "./pages/complain";
 import ComplainAdmin from "./pages/complainAdmin";
 import Detail from "./pages/detailProduct";
+import DetailSPP from "./pages/detailSPP";
 import { UserContext } from "./context/userContext";
 import { useContext, useEffect } from "react";
 import { API, setAuthToken } from "./config/api";
@@ -73,6 +74,7 @@ function App() {
       <Route path="/complain" element={<Complain />} />
       <Route path="/complain-admin" element={<ComplainAdmin />} />
       <Route path="/detail-product/:id" element={<Detail />} />
+      <Route path="/detail-SPP/:id" element={<DetailSPP />} />
 
     </Routes>
    

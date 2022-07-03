@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 // import styles from "../styles/Landing.module.css";
 import { Modal, Dropdown, NavDropdown } from "react-bootstrap";
-// import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 // // import Transactions from "../components/Transactions";
 // //import stylesN from "../components/Navbar.module.css";
 import Navbar from "../components/navbar.js";
 import ProfileIMG from "../assets/ProfileImage.png"
-import Guetemala from "../assets/product2.png"
+import logoSM from "../assets/logoSM.png"
 import Trash from "../assets/trash.svg"
 import styles from "../styles/Profile.module.css";
 import qrcode from "../assets/qr-code.png"
@@ -62,6 +62,16 @@ const updateStatus = async (id, status) => {
   }
 };
 
+const deleteById = async (id) => {
+  try {
+    await API.delete(`/transaction/${id}`);
+    getTransactions();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 useEffect(() => {
   getProfile();
   getTransactions();
@@ -108,9 +118,10 @@ useEffect(() => {
               <div className={styles.product} >
                 <div className={styles.detailProduct}>
                   <img
-                    src={Guetemala}
+                    src={logoSM}
                     className={styles.photoProduct}
                     alt="menu pict"
+                    onClick={() => deleteById(item.id)}
                   />
                   <div className={styles.number}>
                     <p className={styles.productName}>{item.products?.map((item) =>(`${item.name} `))}</p>
@@ -130,18 +141,13 @@ useEffect(() => {
                 </div>
                 <div className={styles.productr}>
                   <img
-                    src={iconS}
-                    alt="waysbeans icon"
-                   style={{height:30, marginBottom:10}}
-                  />
-                  <img
                     src={qrcode}
                     alt="waysbeans icon"
                   />
-                  <div className={styles.status}>{item.status}</div>
+                <div className={styles.status}>success</div>
                 {item.status == 'on the way'? (
                 <button
-                className={styles.statuso}
+                className={styles.status}
                 onClick={()=> {updateStatus(item.id, "success")}}>
                 Completed
                 </button>

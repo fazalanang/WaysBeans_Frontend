@@ -47,41 +47,41 @@ export default function Cart() {
     }
   };
   
-  const increaseCart = async (idProduct) => {
-    try {
-      const result = products.find(({ id }) => id == idProduct);
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
+  // const increaseCart = async (idProduct) => {
+  //   try {
+  //     const result = products.find(({ id }) => id == idProduct);
+  //     const config = {
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //     };
 
-      const body = JSON.stringify({ qty: result.qty + 1 });
-      const response = await API.patch("/cart/" + idProduct, body, config);
-      console.log(result.qty++);
-      getProductCart();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     const body = JSON.stringify({ qty: result.qty + 1 });
+  //     const response = await API.patch("/cart/" + idProduct, body, config);
+  //     console.log(result.qty++);
+  //     getProductCart();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const decreaseCart = async (idProduct) => {
-    try {
-      const result = products.find(({ id }) => id == idProduct);
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
+  // const decreaseCart = async (idProduct) => {
+  //   try {
+  //     const result = products.find(({ id }) => id == idProduct);
+  //     const config = {
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //     };
 
-      const body = JSON.stringify({ qty: result.qty - 1 });
-      const response = await API.patch("/cart/" + idProduct, body, config);
-      console.log(result.qty--);
-      getProductCart();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     const body = JSON.stringify({ qty: result.qty - 1 });
+  //     const response = await API.patch("/cart/" + idProduct, body, config);
+  //     console.log(result.qty--);
+  //     getProductCart();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleBuy = async () => {
     try {
@@ -245,7 +245,7 @@ export default function Cart() {
                             <img src={item.product.image} alt="menu pict" />
                             <div className="qty">
                               <p>{item.product.name}</p>
-                              <button
+                              {/* <button
                                 type="button"
                                 onClick={() => decreaseCart(item.id)}
                               >
@@ -257,7 +257,7 @@ export default function Cart() {
                                 onClick={() => increaseCart(item.id)}
                               >
                                 +
-                              </button>
+                              </button> */}
                             </div>
                           </div>
                           <div className="price">
@@ -290,9 +290,9 @@ export default function Cart() {
                     </p>
                   </div>
                   <div className="detail">
-                    <p className="nameDetail">Qty</p>
+                    <p className="nameDetail">.</p>
                     <p className="numberDetail">
-                     {qty}
+                     .
                     </p>
                   </div>
                   <div className="line2" />

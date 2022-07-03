@@ -1,11 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
-// import styles from "../styles/Landing.module.css";
-// import { Modal, Dropdown, NavDropdown } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
-// // import Transactions from "../components/Transactions";
-// //import stylesN from "../components/Navbar.module.css";
+import sppSM from "../assets/sppSM.jpg"
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar.js";
 import Jumbotron from "../assets/Jumbotron.png"
+import { UserContext } from "../context/userContext";
 
 
 
@@ -17,6 +15,13 @@ import { API } from "../config/api";
 
 export default function Landing() {
   const [products, setProduct] = useState([]);
+  const [state, dispatch] = useContext(UserContext);
+  const [isOrtu1, setisOrtu1] = useState(false);
+
+  const navigate = useNavigate ()
+  const handleNavigateToSPP = () => {
+      navigate ('/detail-SPP')
+  }
 
   const getProducts = async () => {
     try {
@@ -28,9 +33,18 @@ export default function Landing() {
     }
   };
 
+  const checkOrtu = () =>{
+    if(state.user.name == "ortu siswa 1"){
+      setisOrtu1(true)
+    }
+  }
+
+
   useEffect(() => {
     getProducts();
-  }, []);
+    checkOrtu();
+
+  }, [state]);
 
   return (
     <>
@@ -42,37 +56,21 @@ export default function Landing() {
               alt="hero"
             />
           </div>
-          <div className="products">
-            
-          {products?.map((item, index) => (
-                // <div className="product">
-                 <Link key={index}
-                to={`/detail-product/${item.id}`}
-                className="product"
-              >
-                    <img
-                      src={item.image}
-                      // onClick={handLog}
-                      style={{ cursor: "pointer", width:231,height:302,marginBottom:0 }}
-                      alt="icon"
-                    />
-               
-                   
-                      {/* <img src={item.image} alt="icon" />   */}
-                  <p className="productName">{item.name}</p>
-                  <p className="productDesc" style={{ marginBottom: 0, textDecoration: "none" }}>
-                    Rp.{item.price}
-                  </p>
-                  <p
-                    className="productDesc"
-                    style={{ marginBottom: "5px" }}
-                  >
-                    Stock: {item.qty}
-                  </p>
-               </Link>
-          ))}
-          </div>
-    
+            <div className="products">
+              {products?.map((item, index) => (
+                  // <div className="product">
+                  <Link key={index} to={`/detail-SPP/${item.id}`} className="product">
+                      <img
+                        src={item.image}
+                        // onClick={handLog}
+                        style={{ cursor: "pointer", width:231,height:302,marginBottom:0 }}
+                        alt="icon"
+                      />
+                        {/* <img src={item.image} alt="icon" />   */}
+                    <p className="productName">{item.name}</p>
+                </Link>
+              ))};
+            </div>
     </>
   );
 }

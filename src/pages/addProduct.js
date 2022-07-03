@@ -23,7 +23,6 @@ export default function AddProduct() {
   const [preview, setPreview] = useState(null);
   const [form, setForm] = useState({
     name: "",
-    qty: "",
     price: "",
     desc: "",
     image: "",
@@ -57,7 +56,6 @@ export default function AddProduct() {
       formData.set("name", form.name)
       formData.set("desc", form.desc)
       formData.set("price", form.price)
-      formData.set("qty", form.qty)
       
 
       const response = await API.post('/product', formData, config)
@@ -89,13 +87,6 @@ export default function AddProduct() {
               className="inputName"
               onChange={handleChange}
               name="name"
-            />
-            <input
-              type="number"
-              placeholder="Stock"
-              name="qty"
-              className="inputPrice"
-              onChange={handleChange}
             />
             <input
               type="number"

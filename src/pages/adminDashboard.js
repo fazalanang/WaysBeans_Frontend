@@ -1,13 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 // import allow from "../assets/allow.png"
 // import deny from "../assets/deny.png"
 import Navbar from "../components/navbar"
-
-import { API } from "../config/api";
+import dateFormat from "dateformat";
+import { UserContext } from "../context/userContext.js";
+import { API } from "../config/api.js";
 
 
 function AdminDashboard () {
     const [transactions, setTransactions] = useState([]);
+    const [state, dispatch] = useContext(UserContext);
 
     const getTransactions = async () => {
         try {
@@ -19,7 +22,7 @@ function AdminDashboard () {
         }
       };
 
-      const updateStatus = async (id, status) => {
+    const updateStatus = async (id, status) => {
     try {
         const config = {
             headers: {
@@ -33,7 +36,16 @@ function AdminDashboard () {
     } catch (error) {
       console.log(error);
     }
-  };
+      };
+
+    const deleteById = async (id) => {
+        try {
+          await API.delete(`/transaction/${id}`);
+          getTransactions();
+        } catch (error) {
+          console.log(error);
+        }
+      };
     
       useEffect(() => {
         getTransactions();
@@ -43,14 +55,14 @@ function AdminDashboard () {
         <>
             <Navbar/>
             <body>
-                <h1 class="h1Admin">Income Transaction</h1>
+                <h1 class="h1Admin">List Pembayaran</h1>
                 <table className="mb-4">
                     <tr>
                         <th class="no">No</th>
                         <th class="name">Name</th>
-                        <th class="addresAdmin">Address & PostCode</th>
+                        <th class="addresAdmin">Tgl Pembayaran</th>
                        
-                        <th>Products Order</th>
+                        <th>Jenis Pembayaran</th>
                         <th>Status</th>
                         <th class="action">Action</th>
                     </tr>
@@ -58,13 +70,12 @@ function AdminDashboard () {
                     <tr>
                         <td>{index+1}</td>
                         <td>{item.buyer.name}</td>
-                        <td>{item.address}</td>
+                        <td>{dateFormat(item.createdAt, "dddd, d mmmm yyyy")}</td>
                         
                         <td>{item.products?.map((item) =>(`${item.name} `))}</td>
-                        <td class="yellow">{item.status}</td>
+                        <td class="green">success</td>
                         <td class="btnAction">
-                            <button className="cancel" onClick={()=> {updateStatus(item.id, "cancel")}}>Cancel</button>
-                            <button className="approve" onClick={()=> {updateStatus(item.id, "approve")}}>Approve</button>
+                            <button className="cancel" onClick={() => deleteById(item.id)} >Cancel</button>
                         </td>
                     </tr>
                     ))}
