@@ -358,7 +358,7 @@ export default function Navbar() {
                         className="dropdownPict"
                         alt="profile"
                       />
-                      <span className="dropdownText">Add Product</span>
+                      <span className="dropdownText">Add Payment</span>
                     </Link>
                     <Dropdown.Divider />
                     <Link

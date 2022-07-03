@@ -16,7 +16,7 @@ function Chat ({contact, user, messages, sendMessage}) {
                         <div className="rightHeaderChat">
                             <h5>{contact.name}</h5>
                             <div className='onlineChat'>
-                                <div className='icon' >
+                                <div className='iconChat' >
                                     <img src={iconOnline} alt="online"/>
                                 </div>
                                 <div className='pChat'>
